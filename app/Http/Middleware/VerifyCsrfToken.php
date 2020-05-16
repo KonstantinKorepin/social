@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PropertyInitializationFlawsInspection */
 
 namespace App\Http\Middleware;
 
