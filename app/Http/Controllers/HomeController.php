@@ -26,8 +26,10 @@ class HomeController extends Controller
      *
      * @return Renderable
      */
-    public function index(): Renderable
+    public function index(Request $request): Renderable
     {
+
+
         return view('home');
     }
 }
