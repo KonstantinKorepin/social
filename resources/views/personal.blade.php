@@ -7,8 +7,17 @@
                 <div class="card">
                     <div class="card-header">Персональные данные</div>
 
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('personal_edit') }}">
                             @csrf
 
                             <div class="form-group row">
@@ -39,10 +48,47 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="maritalStatus" class="col-md-4 col-form-label text-md-right">Семейное положение</label>
+
+                                <div class="col-md-6">
+                                    <select id="maritalStatus" name="maritalStatus" class="form-control">
+                                        <option value="notMarriedM" selected>Не женат</option>
+                                        <option value="marriedM">Женат</option>
+                                        <option value="notMarriedF">Не замужем</option>
+                                        <option value="marriedM">Замужем</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right" for="edInst">Учебное заведение</label>
+
+                                <div class="col-md-6">
+                                    <input id="edInst" type="text" class="form-control" name="edInst" value="" placeholder="Учебное заведение" required autocomplete="on" autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="birthday" class="col-md-4 col-form-label text-md-right">Дата рождения</label>
 
                                 <div class="col-md-6">
-                                    <input id="birthday" type="text" class="form-control" name="birthday" value="" placeholder="Дата рождения" required autocomplete="on" autofocus>
+                                    <input id="birthday" type="text" class="form-control" name="birthday" value="" placeholder="Дата рождения" required autocomplete="off" autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="status" class="col-md-4 col-form-label text-md-right">Статус</label>
+
+                                <div class="col-md-6">
+                                    <input id="status" type="text" class="form-control" name="status" value="" placeholder="Статус" required autocomplete="off" autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="about" class="col-md-4 col-form-label text-md-right">Обо мне</label>
+
+                                <div class="col-md-6">
+                                    <textarea id="about" name="about" class="form-control" cols="30" rows="10"></textarea>
                                 </div>
                             </div>
 
@@ -50,7 +96,7 @@
                                 <label for="avatar" class="col-md-4 col-form-label text-md-right">Аватарка</label>
 
                                 <div class="col-md-6">
-                                    <input id="avatar" type="file" class="form-control" name="avatar" value="" required autocomplete="on" autofocus>
+                                    <input id="avatar" type="file" class="form-control" name="avatar">
                                 </div>
                             </div>
 

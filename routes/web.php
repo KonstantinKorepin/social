@@ -24,4 +24,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/personal/{id}', 'PersonalController@index')->name('personal');
-Route::post('/personal', 'PersonalController@index')->name('personal_edit');
+Route::post('/personal', 'PersonalController@add')->name('personal_edit');
