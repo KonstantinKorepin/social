@@ -42,7 +42,7 @@
                                 <div class="col-md-6">
                                     <select id="gender" name="gender" class="form-control">
                                         <option value="male" selected>Мужской</option>
-                                        <option value="male">Женский</option>
+                                        <option value="female">Женский</option>
                                     </select>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                                         <option value="notMarriedM" selected>Не женат</option>
                                         <option value="marriedM">Женат</option>
                                         <option value="notMarriedF">Не замужем</option>
-                                        <option value="marriedM">Замужем</option>
+                                        <option value="marriedF">Замужем</option>
                                     </select>
                                 </div>
                             </div>
