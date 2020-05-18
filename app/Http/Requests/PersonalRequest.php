@@ -24,8 +24,8 @@ class PersonalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:3|max:50',
-            'surname' => 'required|min:3|max:50'
+            //'name' => 'required|min:3|max:50',
+            //'surname' => 'required|min:3|max:50'
         ];
     }
 

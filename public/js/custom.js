@@ -17,6 +17,6 @@ $(document).ready(function(){
             }
         },
         timepicker:false,
-        format:'d.m.Y'
+        format:'Y-m-d'
     });
 });

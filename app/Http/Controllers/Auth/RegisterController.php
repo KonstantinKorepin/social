@@ -12,6 +12,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Personals;
 
 class RegisterController extends Controller
 {
@@ -64,21 +65,22 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return User
+     * @return
      */
-    protected function create(array $data): User
+
+
+    protected function create(array $data)
     {
-
-
+        /** @noinspection PhpUndefinedMethodInspection */
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-//        echo "<pre>";
-//            print_r($user);
-//        echo "</pre>";
-//        exit();
+
+        $personals = new Personals();
+        $personals->user_id = $user->id;
+        $personals->save();
 
         return $user;
     }

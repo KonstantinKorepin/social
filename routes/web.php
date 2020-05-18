@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', static function () {
-    return view('welcome');
+    return view('main');
 });
 
 Auth::routes();
@@ -23,5 +23,6 @@ Auth::routes();
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/welcome', 'HomeController@welcome')->name('home');
 Route::get('/personal/{id}', 'PersonalController@index')->name('personal');
 Route::post('/personal', 'PersonalController@add')->name('personal_edit');

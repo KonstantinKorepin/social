@@ -15,16 +15,16 @@ class CreatePersonalsTable extends Migration
     {
         Schema::create('personals', static function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('surname', 100);
-            $table->enum('gender', ['male', 'female']);
-            $table->enum('maritalStatus', ['notMarriedM', 'marriedM', 'notMarriedF', 'marriedF']);
-            $table->string('edInst', 255);
-            $table->date('birthday');
-            $table->string('status', 255);
-            $table->text('about');
-            $table->unsignedBigInteger('avatar_id');
-            $table->unsignedBigInteger('user_id');
+            $table->string('name', 100)->nullable();
+            $table->string('surname', 100)->nullable();
+            $table->enum('gender', ['male', 'female'])->nullable();
+            $table->enum('maritalStatus', ['notMarriedM', 'marriedM', 'notMarriedF', 'marriedF'])->nullable();
+            $table->string('edInst', 255)->nullable();
+            $table->date('birthday')->nullable();
+            $table->string('status', 255)->nullable();
+            $table->text('about')->nullable();
+            $table->unsignedBigInteger('avatar_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('avatar_id')->references('id')->on('files')->onDelete('cascade');;
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->timestamps();

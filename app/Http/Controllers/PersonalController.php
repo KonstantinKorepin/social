@@ -1,12 +1,14 @@
-<?php
+<?php /** @noinspection PhpUnusedAliasInspection */
 
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Http\Requests\PersonalRequest;
+use Illuminate\Support\Facades\DB;
 
 class PersonalController extends Controller
 {
@@ -16,43 +18,48 @@ class PersonalController extends Controller
      */
     public function index($id): View
     {
-//        echo "<pre>";
-//            print_r($id);
-//            print_r("Personal");
-//        echo "</pre>";
-//        exit();
-        $id = 1;
-
-        return view('personal');
+        $personals = DB::table('personals')->where('id', $id)->first();
+        return view('personal', ['personals' => $personals]);
     }
 
     /**
-     * @return Void
+     * @param PersonalRequest $request
+     * @return RedirectResponse
      */
-    public function add(PersonalRequest $request): Void
+    public function add(PersonalRequest $request): RedirectResponse
     {
-//        $validation = $request->validate([
-//            'name' => 'min:3|max:50',
-//            'surname' => 'min:3|max:50'
-//        ]);
 
-//        $name = $request->input('name');
-//        $surname = $request->input('surname');
-//        $gender = $request->input('gender');
-//        $birthday = $request->input('birthday');
+        $id = $request->input('id');
+        $name = $request->input('name');
+        $surname = $request->input('surname');
+        $gender = $request->input('gender');
+        $maritalStatus = $request->input('maritalStatus');
+        $edInst = $request->input('edInst');
+        $birthday = $request->input('birthday');
+        $status = $request->input('status');
+        $about = $request->input('about');
 
-        //dd($name.'-'.$surname.'-'.$gender.'-'.$birthday);
-//        dd($surname);
-//        dd($gender);
-//        dd($birthday);
 //        echo "<pre>";
-//            print_r($request);
-//            //print_r("Personal");
+//            print_r($birthday);
 //        echo "</pre>";
 //        exit();
-        //$id = 1;
 
-        return;
+        DB::table('personals')
+            ->where('id', $id)
+            ->update([
+                'name' => $name,
+                'surname' => $surname,
+                'gender' => $gender,
+                'maritalStatus' => $maritalStatus,
+                'edInst' => $edInst,
+                'birthday' => $birthday,
+                'status' => $status,
+                'about' => $about,
+            ]);
+
+
+
+        return redirect()->route('personal', ['id' => $id]);
     }
 
 

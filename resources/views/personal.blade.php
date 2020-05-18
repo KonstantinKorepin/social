@@ -19,12 +19,13 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('personal_edit') }}">
                             @csrf
+                            <input id="id" type="hidden" name="id" value="{{ $personals->id }}">
 
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Имя</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="" placeholder="Ваше имя" required autocomplete="on" autofocus>
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ $personals->name }}" placeholder="Ваше имя" autocomplete="on" autofocus>
                                 </div>
                             </div>
 
@@ -32,7 +33,7 @@
                                 <label for="surname" class="col-md-4 col-form-label text-md-right">Фамилия</label>
 
                                 <div class="col-md-6">
-                                    <input id="surname" type="text" class="form-control" name="surname" value="" placeholder="Ваша фамилия" required autocomplete="on" autofocus>
+                                    <input id="surname" type="text" class="form-control" name="surname" value="{{ $personals->surname }}" placeholder="Ваша фамилия" autocomplete="on" autofocus>
                                 </div>
                             </div>
 
@@ -41,8 +42,8 @@
 
                                 <div class="col-md-6">
                                     <select id="gender" name="gender" class="form-control">
-                                        <option value="male" selected>Мужской</option>
-                                        <option value="female">Женский</option>
+                                        <option value="male" @if ($personals->gender === 'male') selected @endif>Мужской</option>
+                                        <option value="female" @if ($personals->gender === 'female') selected @endif>Женский</option>
                                     </select>
                                 </div>
                             </div>
@@ -52,10 +53,10 @@
 
                                 <div class="col-md-6">
                                     <select id="maritalStatus" name="maritalStatus" class="form-control">
-                                        <option value="notMarriedM" selected>Не женат</option>
-                                        <option value="marriedM">Женат</option>
-                                        <option value="notMarriedF">Не замужем</option>
-                                        <option value="marriedF">Замужем</option>
+                                        <option value="notMarriedM" @if ($personals->maritalStatus === 'notMarriedM') selected @endif>Не женат</option>
+                                        <option value="marriedM" @if ($personals->maritalStatus === 'marriedM') selected @endif>Женат</option>
+                                        <option value="notMarriedF" @if ($personals->maritalStatus === 'notMarriedF') selected @endif>Не замужем</option>
+                                        <option value="marriedF" @if ($personals->maritalStatus === 'marriedF') selected @endif>Замужем</option>
                                     </select>
                                 </div>
                             </div>
@@ -64,7 +65,7 @@
                                 <label class="col-md-4 col-form-label text-md-right" for="edInst">Учебное заведение</label>
 
                                 <div class="col-md-6">
-                                    <input id="edInst" type="text" class="form-control" name="edInst" value="" placeholder="Учебное заведение" required autocomplete="on" autofocus>
+                                    <input id="edInst" type="text" class="form-control" name="edInst" value="{{ $personals->edInst }}" placeholder="Учебное заведение" autocomplete="on" autofocus>
                                 </div>
                             </div>
 
@@ -72,7 +73,7 @@
                                 <label for="birthday" class="col-md-4 col-form-label text-md-right">Дата рождения</label>
 
                                 <div class="col-md-6">
-                                    <input id="birthday" type="text" class="form-control" name="birthday" value="" placeholder="Дата рождения" required autocomplete="off" autofocus>
+                                    <input id="birthday" type="text" class="form-control" name="birthday" value="{{ $personals->birthday }}" placeholder="Дата рождения" autocomplete="off" autofocus>
                                 </div>
                             </div>
 
@@ -80,7 +81,7 @@
                                 <label for="status" class="col-md-4 col-form-label text-md-right">Статус</label>
 
                                 <div class="col-md-6">
-                                    <input id="status" type="text" class="form-control" name="status" value="" placeholder="Статус" required autocomplete="off" autofocus>
+                                    <input id="status" type="text" class="form-control" name="status" value="{{ $personals->status }}" placeholder="Статус" autocomplete="off" autofocus>
                                 </div>
                             </div>
 
@@ -88,7 +89,7 @@
                                 <label for="about" class="col-md-4 col-form-label text-md-right">Обо мне</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="about" name="about" class="form-control" cols="30" rows="10"></textarea>
+                                    <textarea id="about" name="about" class="form-control" cols="30" rows="10">{{ $personals->about }}</textarea>
                                 </div>
                             </div>
 
