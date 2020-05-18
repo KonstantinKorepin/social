@@ -26,3 +26,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/welcome', 'HomeController@welcome')->name('home');
 Route::get('/personal/{id}', 'PersonalController@index')->name('personal');
 Route::post('/personal', 'PersonalController@add')->name('personal_edit');
+Route::get('/test', 'PersonalController@test')->name('test');

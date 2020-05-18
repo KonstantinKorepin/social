@@ -17,7 +17,7 @@
                         </div>
                     @endif
                     <div class="card-body">
-                        <form method="POST" action="{{ route('personal_edit') }}">
+                        <form method="POST" action="{{ route('personal_edit') }}" enctype="multipart/form-data">
                             @csrf
                             <input id="id" type="hidden" name="id" value="{{ $personals->id }}">
 
