@@ -13,7 +13,7 @@ class CreatePersonalsTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('personal', static function (Blueprint $table) {
+        Schema::create('personals', static function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
             $table->string('surname', 100);
@@ -24,7 +24,9 @@ class CreatePersonalsTable extends Migration
             $table->string('status', 255);
             $table->text('about');
             $table->unsignedBigInteger('avatar_id');
-            $table->foreign('avatar_id')->references('id')->on('files');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('avatar_id')->references('id')->on('files')->onDelete('cascade');;
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->timestamps();
         });
     }
@@ -36,6 +38,6 @@ class CreatePersonalsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('personal');
+        Schema::dropIfExists('personals');
     }
 }
